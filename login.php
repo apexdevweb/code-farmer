@@ -3,10 +3,8 @@ require("actionback/users/loginScript.php");
 if (isset($_POST['connexion'])) {
     if (!empty($_POST['mail']) && !empty($_POST['Upassword'])) {
         // ON RECUPERE LES INFO DE L'UTILISATEUR POUR LA CONFIRMATION PAR EMAIL
-
         $verifRecupUser = $bdd->prepare("SELECT * FROM users WHERE mail = ? AND userPassword");
         $verifRecupUser->execute(array($_POST['mail'], $_POST['Upassword']));
-
         if ($verifRecupUser->rowCount() > 0) {
             $verifUserInfos = $verifRecupUser->fetch();
             if ($verifUserInfos['confirm'] == 1 && $_POST['Upassword'] == $verifUserInfos['userPassword']) {
@@ -27,7 +25,6 @@ if (isset($_POST['connexion'])) {
 
 <?php
 include("includes/head.php");
-include("includes/cryptageUrl.php");
 ?>
 
 <body>
@@ -40,7 +37,6 @@ include("includes/cryptageUrl.php");
         <br>
         <br>
         <form method="POST">
-
             <?php
             if (isset($errorMsg)) {
                 echo "<p>" . $errorMsg . "</p>";
@@ -57,7 +53,7 @@ include("includes/cryptageUrl.php");
             <button type="submit" class="btn btn-primary" name="connexion">Connection</button>
         </form>
         <br>
-        <a href="<?= isset($url[1]) ?>" class="btnRetour">Signup <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="signup.php" class="btnRetour">Signup <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </body>
 

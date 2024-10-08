@@ -6,7 +6,6 @@ require("actionback/users/signupScript.php");
 
 <?php
 include("includes/head.php");
-include("includes/cryptageUrl.php");
 ?>
 
 <body>
@@ -72,7 +71,7 @@ include("includes/cryptageUrl.php");
             <button type="submit" class="btn btn-primary" name="signup">Inscription</button>
         </form>
         <br>
-        <a href="<?= isset($url[2]) ?>" class="btnRetour">Login <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="login.php" class="btnRetour">Login <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </body>
 
